@@ -52,8 +52,9 @@ class App extends React.Component {
     })
   }
 
-  completeTask = (e) => {
+  completeTask = (e, item) => {
     e.target.classList.toggle("line-through");
+    item.completed = !item.completed;
   }
 
   render() {
