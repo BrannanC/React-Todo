@@ -52,10 +52,17 @@ class App extends React.Component {
     })
   }
 
+  completeTask = (e) => {
+    e.target.classList.toggle("line-through");
+  }
+
   render() {
     return (
       <div>
-        <TodoList todoItems={this.state.todoItems}/>
+        <TodoList 
+          todoItems={this.state.todoItems}
+          completeTask={this.completeTask}
+        />
         <TodoForm 
           inputText={this.state.inputText}
           handleChange={this.handleChange}
