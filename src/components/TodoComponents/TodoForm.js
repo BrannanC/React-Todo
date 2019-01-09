@@ -8,6 +8,8 @@ const TodoForm = (props) => {
         placeholder="Add new Character"
         onChange={props.handleChange}
       />
+      <button type="submit">Add Todo</button>
+      <button onClick={props.clearAll}>Clear All</button>
     </form>
 }
 

@@ -45,6 +45,7 @@ class App extends React.Component {
   }
 
   clearAll = (e) => {
+    e.preventDefault();
     this.setState({
       todoItems: [],
       inputText: ''
@@ -59,6 +60,7 @@ class App extends React.Component {
           inputText={this.state.inputText}
           handleChange={this.handleChange}
           addTodo={this.addTodo}
+          clearAll={this.clearAll}
           />
       </div>
     );
