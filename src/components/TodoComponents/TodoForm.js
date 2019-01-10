@@ -19,7 +19,6 @@ const TodoForm = (props) => {
             type="text"
             placeholder="Search"
             onChange={props.handleChange}
-            onSubmit={props.searchList}
         />
     </form>
 }
