@@ -9,12 +9,14 @@ if(!localStorage.getItem('items')){
     {
       task: 'Organize Garage',
       id: 1528817077286,
-      completed: false
+      completed: false,
+      hidden: false
     },
     {
       task: 'Bake Cookies',
       id: 1528817084358,
-      completed: false
+      completed: false,
+      hidden: false
     }
   ]))
 }
@@ -25,33 +27,38 @@ class App extends React.Component {
     this.state = {
       todoItems: JSON.parse(localStorage.getItem('items')),
       inputText: '',
+      searchText: ''
     }
   }
 
   handleChange = e => {
     this.setState({
-      inputText: e.target.value
+      [e.target.name]: e.target.value
     });
   }
 
   addTodo = (e) => {
     e.preventDefault();
-    this.setState({
-      todoItems: [
-        ...this.state.todoItems,
-        { task: this.state.inputText,
-        id: Date.now(),
-      completed: false }
-      ],
-      inputText: "",
-    });
+    if(this.state.inputText.trim() !== ''){
+      this.setState({
+        todoItems: [
+          ...this.state.todoItems,
+          { task: this.state.inputText,
+          id: Date.now(),
+        completed: false,
+        hidden: false }
+        ],
+        inputText: "",
+      });
+    }
   }
 
   clearAll = (e) => {
     e.preventDefault();
     this.setState({
       todoItems: [],
-      inputText: ''
+      inputText: '',
+      searchText: ''
     })
   }
 
@@ -79,6 +86,7 @@ class App extends React.Component {
         <TodoList 
           todoItems={this.state.todoItems}
           completeTask={this.completeTask}
+          searchText={this.state.searchText}
         />
         <TodoForm 
           inputText={this.state.inputText}
